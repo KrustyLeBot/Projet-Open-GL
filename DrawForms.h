@@ -115,6 +115,7 @@ void drawSemiCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numbe
 
 void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSectors, GLint numberOfStacks, GLint hex_col, GLboolean frameOnly)
 {
+    numberOfStacks = numberOfStacks / 2;
     GLfloat lastZ_XY = z;
     GLfloat currentZ_Z = z;
     GLfloat lastX_XY = x + radius;
@@ -123,12 +124,12 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
     GLfloat currentY_Z = 0.0f;
     GLfloat currentRadius = radius;
 
-    for (GLfloat phi = -90.0f; phi < (90.0f + (90.0f / (numberOfStacks / 2))); phi += 90.0f / (numberOfStacks / 2))
+    for (GLfloat phi = -90.0f; phi <= (90.0f); phi += 90.0f / numberOfStacks)
     {
         GLfloat phiRadian = phi * 3.1415926535897932384626433832795 / 180;
         currentZ_Z = z + (radius * sin(phiRadian));
 
-        for (GLfloat teta = 0.0f; teta < (360.0f + (360.0f / numberOfSectors)); teta += 360.0f / numberOfSectors)
+        for (GLfloat teta = 0.0f; teta < (360.0f); teta += 360.0f / numberOfSectors)
         {
             GLfloat tetaRadian = teta * 3.1415926535897932384626433832795 / 180;
             GLfloat currentX_XY = x + (currentRadius * cos(tetaRadian));
@@ -139,28 +140,30 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
             currentX_Z = z + (radius * cos(phiRadian) * cos(tetaRadian));
             currentY_Z = z + (radius * cos(phiRadian) * sin(tetaRadian));
 
-            drawTriangle
-            (
-                lastX_XY, lastY_XY, lastZ_XY,
-                currentX_Z, currentY_Z, currentZ_Z,
-                currentX_XY, currentY_XY, lastZ_XY,
-                hex_col,
-                hex_col,
-                hex_col,
-                frameOnly
-            );
+            if (phi != -90.0f)
+            {
+                drawTriangle
+                (
+                    lastX_XY, lastY_XY, lastZ_XY,
+                    currentX_Z, currentY_Z, currentZ_Z,
+                    currentX_XY, currentY_XY, lastZ_XY,
+                    hex_col,
+                    hex_col,
+                    hex_col,
+                    frameOnly
+                    );
 
-            drawTriangle
-            (
-                lastX_XY, lastY_XY, lastZ_XY,
-                lastX_Z, lastY_Z, currentZ_Z,
-                currentX_Z, currentY_Z, currentZ_Z,
-                hex_col,
-                hex_col,
-                hex_col,
-                frameOnly
-             );
-
+                drawTriangle
+                (
+                    lastX_XY, lastY_XY, lastZ_XY,
+                    lastX_Z, lastY_Z, currentZ_Z,
+                    currentX_Z, currentY_Z, currentZ_Z,
+                    hex_col,
+                    hex_col,
+                    hex_col,
+                    frameOnly
+                    );
+            }
             lastX_XY = currentX_XY;
             lastY_XY = currentY_XY;
         }

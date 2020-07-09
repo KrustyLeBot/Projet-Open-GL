@@ -40,23 +40,35 @@ int main(void)
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LESS);
 
-        glRotatef((float)glfwGetTime() * 10.f, (float)glfwGetTime() * 50.f, 0.f, 1.f);
+        glRotatef((float)glfwGetTime() * 10.f, 1.0f, 1.0f, 0.0f);
 
-        /*drawRectangle
+        drawRectangle
         (
-            -0.5f, -0.5f, 0.f,
-            -0.5f, 0.5f, 0.f,
-            0.5f, 0.5f, 0.f,
-            0.5f, -0.5f, 0.f,
-
+            -0.5f, -0.5f, 0.0f,
+            -0.5f, 0.5f, 0.0f,
+            0.5f, 0.5f, 0.0f,
+            0.5f, -0.5f, 0.0f,
             0xf5aa42,
             0x42f545,
             0xf542e6,
             0x3840d9,
             true
-        );*/
+        );
 
-        drawSphere(0.0f, 0.0f, 0.0f, 0.5f, 200, 200, 0xf542e6, true);
+        drawRectangle
+        (
+            0.0f, -0.5f, -0.5f,
+            0.0f, 0.5f, -0.5f,
+            0.0f, 0.5f, 0.5f,
+            0.0f, -0.5f, 0.5f,
+            0xf5aa42,
+            0x42f545,
+            0xf542e6,
+            0x3840d9,
+            true
+            );
+
+        drawSphere(0.0f, 0.0f, 0.0f, 0.5f, 50, 50, 0xf542e6, true);
 
         glfwSwapBuffers(window);
         glfwPollEvents();

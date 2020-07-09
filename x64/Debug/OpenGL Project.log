@@ -14,15 +14,15 @@ X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(75,26): warning C4244: 'initialisati
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(98,24): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(99,26): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(100,26): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(128,27): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(129,24): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(133,32): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(134,33): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(129,27): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(130,24): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(134,32): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(135,33): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(136,36): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(137,29): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(136,33): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(137,36): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(138,29): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(139,28): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(139,29): warning C4244: 'initialisation' : conversion de 'double' en 'GLfloat', perte possible de données
 X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(140,28): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
-X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(170,32): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(141,28): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
+X:\TEMP_DOWNLOAD\Projet-Open-GL\DrawForms.h(173,32): warning C4244: '=' : conversion de 'double' en 'GLfloat', perte possible de données
   OpenGL Project.vcxproj -> X:\TEMP_DOWNLOAD\Projet-Open-GL\x64\Debug\OpenGL Project.exe
