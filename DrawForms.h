@@ -51,15 +51,50 @@ void drawRectangle(GLfloat x_a, GLfloat y_a, GLfloat z_a, GLfloat x_b, GLfloat y
     );
 }
 
-void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides)
+void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides, GLint hex_col)
 {
-    GLfloat twicePi = 2.0f * 3.14159265359f;
+    GLfloat lastX = x + radius;
+    GLfloat lastY = y;
 
-    for (int a = 0; a < 360; a += 360 / numberOfSides)
+    for (GLfloat a = 0.0f; a < (360.0f + (360.0f / numberOfSides)); a += 360.0f / numberOfSides)
     {
-        GLfloat heading = a * 3.1415926535897932384626433832795 / 180;
-        vertices.Add(new Vector3d(Math.Cos(heading) * this.radius, Math.Sin(heading) * this.radius, position.Z));
-    }
+        GLfloat radian = a * 3.1415926535897932384626433832795 / 180;
+        GLfloat currentX = x + (radius * cos(radian));
+        GLfloat currentY = y + (radius * sin(radian));
+        drawTriangle
+        (
+            lastX, lastY, z,
+            currentX, currentY, z,
+            x, y, z,
+            hex_col,
+            hex_col,
+            hex_col
+        );
+        lastX = currentX;
+        lastY = currentY;
+    }  
+}
 
-    
+void drawSemiCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides, GLint hex_col)
+{
+    GLfloat lastX = x + radius;
+    GLfloat lastY = y;
+
+    for (GLfloat a = 0.0f; a < (180.0f + (180.0f / numberOfSides)); a += 180.0f / numberOfSides)
+    {
+        GLfloat radian = a * 3.1415926535897932384626433832795 / 180;
+        GLfloat currentX = x + (radius * cos(radian));
+        GLfloat currentY = y + (radius * sin(radian));
+        drawTriangle
+        (
+            lastX, lastY, z,
+            currentX, currentY, z,
+            x, y, z,
+            hex_col,
+            hex_col,
+            hex_col
+            );
+        lastX = currentX;
+        lastY = currentY;
+    }
 }

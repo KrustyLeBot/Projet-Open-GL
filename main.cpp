@@ -12,9 +12,8 @@ int main(void)
 {
     GLFWwindow* window;
     glfwSetErrorCallback(error_callback);
-    if (!glfwInit())
-        exit(EXIT_FAILURE);
-    window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+    if (!glfwInit()) exit(EXIT_FAILURE);
+    window = glfwCreateWindow(640, 640, "Simple example", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -30,15 +29,17 @@ int main(void)
         glfwGetFramebufferSize(window, &width, &height);
         ratio = width / (float)height;
         glViewport(0, 0, width, height);
+        
         glClear(GL_COLOR_BUFFER_BIT);
-        /*glMatrixMode(GL_PROJECTION);
+        glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-        glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);*/
 
-        drawRectangle
+        //glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+
+        /*drawRectangle
         (
             -0.5f, -0.5f, 0.f,
             -0.5f, 0.5f, 0.f,
@@ -49,12 +50,13 @@ int main(void)
             0x42f545,
             0xf542e6,
             0x3840d9
-        );
+        );*/
+
+        drawSemiCircle(0.0f, 0.0f, 0.0f, 0.5f, 1000, 0xf542e6);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     glfwDestroyWindow(window);
     glfwTerminate();
-    exit(EXIT_SUCCESS);
 }
