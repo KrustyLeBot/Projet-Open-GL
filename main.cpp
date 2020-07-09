@@ -30,14 +30,17 @@ int main(void)
         ratio = width / (float)height;
         glViewport(0, 0, width, height);
         
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        //glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
+
+        glRotatef((float)glfwGetTime() * 10.f, (float)glfwGetTime() * 50.f, 0.f, 1.f);
 
         /*drawRectangle
         (
@@ -49,10 +52,11 @@ int main(void)
             0xf5aa42,
             0x42f545,
             0xf542e6,
-            0x3840d9
+            0x3840d9,
+            true
         );*/
 
-        drawSemiCircle(0.0f, 0.0f, 0.0f, 0.5f, 1000, 0xf542e6);
+        drawSphere(0.0f, 0.0f, 0.0f, 0.5f, 200, 200, 0xf542e6, true);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
