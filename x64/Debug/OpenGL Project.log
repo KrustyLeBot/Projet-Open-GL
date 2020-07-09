@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(10,9): error C3861: 'drawTriangle': identifier not found
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(25,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(24,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(23,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(32,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(31,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(30,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(39,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(38,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\jbravais\Desktop\Projet OperGL\OpenGL Project\DrawForms.h(37,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data

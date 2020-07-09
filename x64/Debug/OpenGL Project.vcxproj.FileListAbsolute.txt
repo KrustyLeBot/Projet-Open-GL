@@ -1,0 +1,2 @@
+X:\TEMP_DOWNLOAD\Projet OperGL\OpenGL Project\x64\Debug\OpenGL Project.pdb
+X:\TEMP_DOWNLOAD\Projet OperGL\OpenGL Project\x64\Debug\OpenGL Project.exe

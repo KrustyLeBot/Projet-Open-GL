@@ -1,0 +1,4 @@
+﻿MSVCRTD.lib(exe_main.obj) : error LNK2019: symbole externe non résolu _main référencé dans la fonction "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+GLFW\glfw3.lib : warning LNK4272: type d'ordinateur bibliothèque 'x64' en conflit avec le type d'ordinateur cible 'x86'
+GLFW\glfw3dll.lib : warning LNK4272: type d'ordinateur bibliothèque 'x64' en conflit avec le type d'ordinateur cible 'x86'
+X:\TEMP_DOWNLOAD\Projet OperGL\OpenGL Project\Debug\OpenGL Project.exe : fatal error LNK1120: 1 externes non résolus
