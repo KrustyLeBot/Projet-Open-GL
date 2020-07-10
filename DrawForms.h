@@ -103,7 +103,7 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
     std::vector<GLfloat> colors;
     numberOfStacks = numberOfStacks / 2;
     GLfloat lastZ_XY = z;
-    GLfloat currentZ_Z = z;
+    GLfloat currentZ_Z = z-radius;
     GLfloat lastX_XY = x + radius;
     GLfloat lastY_XY = y;
     GLfloat currentX_Z = 0.0f;
