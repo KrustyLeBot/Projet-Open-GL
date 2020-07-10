@@ -21,6 +21,8 @@
       <Filter>glad</Filter>
     </ClInclude>
     <ClInclude Include="DrawForms.h" />
+    <ClInclude Include="temp.h" />
+    <ClInclude Include="LoadShaders.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLFW">
@@ -42,5 +44,7 @@
     <None Include="GLFW\glfw3.dll">
       <Filter>GLFW</Filter>
     </None>
+    <None Include="VertexShader.vertexshader" />
+    <None Include="FragmentShader.fragmentshader" />
   </ItemGroup>
 </Project>

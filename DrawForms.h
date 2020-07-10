@@ -1,8 +1,7 @@
 #pragma once
 #include <math.h>
-#include <vector>
 
-void drawTriangle(GLfloat x_a, GLfloat y_a, GLfloat z_a, GLfloat x_b, GLfloat y_b, GLfloat z_b, GLfloat x_c, GLfloat y_c, GLfloat z_c, GLint hex_col_a, GLint hex_col_b, GLint hex_col_c, GLboolean frameOnly)
+void display(std::vector<GLfloat>& vertices, std::vector<GLfloat>& colors, GLenum mode, GLboolean frameOnly)
 {
     if (frameOnly)
     {
@@ -13,58 +12,55 @@ void drawTriangle(GLfloat x_a, GLfloat y_a, GLfloat z_a, GLfloat x_b, GLfloat y_
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
-    glBegin(GL_TRIANGLE_STRIP);
-    
-    glColor3f(
-        ((hex_col_a >> 16) & 0xFF) / 255.0,
-        ((hex_col_a >> 8) & 0xFF) / 255.0,
-        ((hex_col_a) & 0xFF) / 255.0
-    );
-    glVertex3f(x_a, y_a, z_a);
+    /* We have a color array and a vertex array */
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices.data());
+    glColorPointer(3, GL_FLOAT, 0, colors.data());
 
-    glColor3f(
-        ((hex_col_b >> 16) & 0xFF) / 255.0,
-        ((hex_col_b >> 8) & 0xFF) / 255.0,
-        ((hex_col_b) & 0xFF) / 255.0
-    );
-    glVertex3f(x_b, y_b, z_b);
+    /* Send data : 24 vertices */
+    glDrawArrays(mode, 0, vertices.size() / 3);
 
-    glColor3f(
-        ((hex_col_c >> 16) & 0xFF) / 255.0,
-        ((hex_col_c >> 8) & 0xFF) / 255.0,
-        ((hex_col_c) & 0xFF) / 255.0
-    );
-    glVertex3f(x_c, y_c, z_c);
-    glEnd();
+    /* Cleanup states */
+    glDisableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void drawRectangle(GLfloat x_a, GLfloat y_a, GLfloat z_a, GLfloat x_b, GLfloat y_b, GLfloat z_b, GLfloat x_c, GLfloat y_c, GLfloat z_c, GLfloat x_d, GLfloat y_d, GLfloat z_d, GLint hex_col_a, GLint hex_col_b, GLint hex_col_c, GLint hex_col_d, GLboolean frameOnly)
 {
-    drawTriangle
-    (
+    std::vector<GLfloat> vertices = 
+    {
         x_a, y_a, z_a,
         x_b, y_b, z_b,
         x_c, y_c, z_c,
-        hex_col_a,
-        hex_col_b,
-        hex_col_c,
-        frameOnly
-    );
-
-    drawTriangle
-    (
-        x_a, y_a, z_a,
-        x_c, y_c, z_c,
         x_d, y_d, z_d,
-        hex_col_a,
-        hex_col_c,
-        hex_col_d,
-        frameOnly
-    );
+    };
+    std::vector<GLfloat> colors;
+
+    colors.push_back(((hex_col_a >> 16) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_a >> 8) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_a) & 0xFF) / 255.0);
+
+    colors.push_back(((hex_col_b >> 16) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_b >> 8) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_b) & 0xFF) / 255.0);
+
+    colors.push_back(((hex_col_c >> 16) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_c >> 8) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_c) & 0xFF) / 255.0);
+
+    colors.push_back(((hex_col_d >> 16) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_d >> 8) & 0xFF) / 255.0);
+    colors.push_back(((hex_col_d) & 0xFF) / 255.0);
+
+    display(vertices, colors, GL_QUADS, frameOnly);
 }
 
 void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides, GLint hex_col, GLboolean frameOnly)
 {
+    std::vector<GLfloat> vertices;
+    std::vector<GLfloat> colors;
+
     GLfloat lastX = x + radius;
     GLfloat lastY = y;
 
@@ -73,48 +69,38 @@ void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
         GLfloat radian = a * 3.1415926535897932384626433832795 / 180;
         GLfloat currentX = x + (radius * cos(radian));
         GLfloat currentY = y + (radius * sin(radian));
-        drawTriangle
-        (
-            lastX, lastY, z,
-            currentX, currentY, z,
-            x, y, z,
-            hex_col,
-            hex_col,
-            hex_col,
-            frameOnly
-        );
+
+        vertices.push_back(lastX);
+        vertices.push_back(lastY);
+        vertices.push_back(z);
+        colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+        colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+        colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+        vertices.push_back(currentX);
+        vertices.push_back(currentY);
+        vertices.push_back(z);
+        colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+        colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+        colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+        vertices.push_back(x);
+        vertices.push_back(y);
+        vertices.push_back(z);
+        colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+        colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+        colors.push_back(((hex_col) & 0xFF) / 255.0);
+
         lastX = currentX;
         lastY = currentY;
     }  
-}
-
-void drawSemiCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides, GLint hex_col, GLboolean frameOnly)
-{
-    GLfloat lastX = x + radius;
-    GLfloat lastY = y;
-
-    for (GLfloat a = 0.0f; a < (180.0f + (180.0f / numberOfSides)); a += 180.0f / numberOfSides)
-    {
-        GLfloat radian = a * 3.1415926535897932384626433832795 / 180;
-        GLfloat currentX = x + (radius * cos(radian));
-        GLfloat currentY = y + (radius * sin(radian));
-        drawTriangle
-        (
-            lastX, lastY, z,
-            currentX, currentY, z,
-            x, y, z,
-            hex_col,
-            hex_col,
-            hex_col,
-            frameOnly
-        );
-        lastX = currentX;
-        lastY = currentY;
-    }
+    display(vertices, colors, GL_TRIANGLES, frameOnly);
 }
 
 void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSectors, GLint numberOfStacks, GLint hex_col, GLboolean frameOnly)
 {
+    std::vector<GLfloat> vertices;
+    std::vector<GLfloat> colors;
     numberOfStacks = numberOfStacks / 2;
     GLfloat lastZ_XY = z;
     GLfloat currentZ_Z = z;
@@ -142,27 +128,48 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
 
             if (phi != -90.0f)
             {
-                drawTriangle
-                (
-                    lastX_XY, lastY_XY, lastZ_XY,
-                    currentX_Z, currentY_Z, currentZ_Z,
-                    currentX_XY, currentY_XY, lastZ_XY,
-                    hex_col,
-                    hex_col,
-                    hex_col,
-                    frameOnly
-                    );
+                vertices.push_back(lastX_XY);
+                vertices.push_back(lastY_XY);
+                vertices.push_back(lastZ_XY);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
 
-                drawTriangle
-                (
-                    lastX_XY, lastY_XY, lastZ_XY,
-                    lastX_Z, lastY_Z, currentZ_Z,
-                    currentX_Z, currentY_Z, currentZ_Z,
-                    hex_col,
-                    hex_col,
-                    hex_col,
-                    frameOnly
-                    );
+                vertices.push_back(currentX_Z);
+                vertices.push_back(currentY_Z);
+                vertices.push_back(currentZ_Z);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+                vertices.push_back(currentX_XY);
+                vertices.push_back(currentY_XY);
+                vertices.push_back(lastZ_XY);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+
+                vertices.push_back(lastX_XY);
+                vertices.push_back(lastY_XY);
+                vertices.push_back(lastZ_XY);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+                vertices.push_back(lastX_Z);
+                vertices.push_back(lastY_Z);
+                vertices.push_back(currentZ_Z);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
+
+                vertices.push_back(currentX_Z);
+                vertices.push_back(currentY_Z);
+                vertices.push_back(currentZ_Z);
+                colors.push_back(((hex_col >> 16) & 0xFF) / 255.0);
+                colors.push_back(((hex_col >> 8) & 0xFF) / 255.0);
+                colors.push_back(((hex_col) & 0xFF) / 255.0);
             }
             lastX_XY = currentX_XY;
             lastY_XY = currentY_XY;
@@ -172,4 +179,43 @@ void drawSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfS
         lastZ_XY = currentZ_Z;
         currentRadius = radius * cos(phiRadian);
     }
+    display(vertices, colors, GL_TRIANGLES, frameOnly);
+}
+
+void drawCube()
+{
+    std::vector<GLfloat> vertices =
+    {
+        -0.5f, -0.5f, -0.5f,   -0.5f, -0.5f,  0.5f,   -0.5f,  0.5f,  0.5f,   -0.5f,  0.5f, -0.5f,
+        0.5f, -0.5f, -0.5f,    0.5f, -0.5f,  0.5f,    0.5f,  0.5f,  0.5f,    0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,   -0.5f, -0.5f,  0.5f,    0.5f, -0.5f,  0.5f,    0.5f, -0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,   -0.5f,  0.5f,  0.5f,    0.5f,  0.5f,  0.5f,    0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,   -0.5f,  0.5f, -0.5f,    0.5f,  0.5f, -0.5f,    0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,   -0.5f,  0.5f,  0.5f,    0.5f,  0.5f,  0.5f,    0.5f, -0.5f,  0.5f
+    };
+
+    std::vector<GLfloat> colors =
+    {
+        0, 0, 1,   0, 0, 1,   0, 1, 1,   0, 1, 0,
+        1, 0, 0,   1, 0, 1,   1, 1, 1,   1, 1, 0,
+        0, 0, 0,   0, 0, 1,   1, 0, 1,   1, 0, 0,
+        0, 1, 0,   0, 1, 1,   1, 1, 1,   1, 1, 0,
+        0, 0, 1,   0, 1, 0,   1, 1, 0,   1, 0, 0,
+        0, 0, 1,   0, 1, 1,   1, 1, 1,   1, 0, 1
+    };
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    /* We have a color array and a vertex array */
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices.data());
+    glColorPointer(3, GL_FLOAT, 0, colors.data());
+
+    /* Send data : 24 vertices */
+    glDrawArrays(GL_QUADS, 0, vertices.size() / 3);
+
+    /* Cleanup states */
+    glDisableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_VERTEX_ARRAY);
 }

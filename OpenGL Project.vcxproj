@@ -148,6 +148,8 @@
     <ClInclude Include="glad\khrplatform.h" />
     <ClInclude Include="GLFW\glfw3.h" />
     <ClInclude Include="GLFW\glfw3native.h" />
+    <ClInclude Include="LoadShaders.h" />
+    <ClInclude Include="temp.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="GLFW\glfw3.lib" />
@@ -155,6 +157,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GLFW\glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FragmentShader.fragmentshader">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="VertexShader.vertexshader">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
