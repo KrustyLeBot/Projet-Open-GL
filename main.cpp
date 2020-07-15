@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Callbacks.h"
+#include "glm/glm.hpp"
 
 #include "Objects/Object.h"
 #include "Objects/ObjectSphere.h"
@@ -62,6 +63,7 @@ int main(void)
     //objectsVector.push_back(ObjectCircle(0.0f, 0.0f, 0.0f, 0.5f, 30, 0xf542e6, true));
     //objectsVector.push_back(ObjectRectangle(-0.8f, -0.2f, -0.8f, 0.2f, -0.4f, 0.2f, -0.4f, -0.2f, 0.0f, 0xf542e6, 0xf542e6, 0xf542e6, 0xf542e6, false));
     //objectsVector.push_back(ObjectRectangle(-0.8f, -0.2f, -0.8f, 0.2f, -0.4f, 0.2f, -0.4f, -0.2f, 0.0f, 0xeb311c, 0xeb311c, 0xeb311c, 0xeb311c, false));
+    
     
 
     while (!glfwWindowShouldClose(window))

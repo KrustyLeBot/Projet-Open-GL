@@ -469,9 +469,6 @@
     <None Include="GLFW\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FragmentShader.fragmentshader">
-      <FileType>Document</FileType>
-    </None>
     <None Include="glm\detail\func_common.inl" />
     <None Include="glm\detail\func_common_simd.inl" />
     <None Include="glm\detail\func_exponential.inl" />
@@ -608,9 +605,6 @@
     <None Include="glm\gtx\vector_angle.inl" />
     <None Include="glm\gtx\vector_query.inl" />
     <None Include="glm\gtx\wrap.inl" />
-    <None Include="VertexShader.vertexshader">
-      <FileType>Document</FileType>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

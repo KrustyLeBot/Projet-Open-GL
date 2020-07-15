@@ -354,8 +354,6 @@
     <None Include="GLFW\glfw3.dll">
       <Filter>GLFW</Filter>
     </None>
-    <None Include="VertexShader.vertexshader" />
-    <None Include="FragmentShader.fragmentshader" />
     <None Include="glm\detail\func_common.inl" />
     <None Include="glm\detail\func_common_simd.inl" />
     <None Include="glm\detail\func_exponential.inl" />

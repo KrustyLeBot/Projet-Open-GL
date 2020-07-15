@@ -1,4 +1,2 @@
 ﻿  glm.cpp
-X:\TEMP_DOWNLOAD\Projet-Open-GL\glm\detail\glm.cpp(7,10): fatal error C1083: Impossible d'ouvrir le fichier include : 'glm/gtx/dual_quaternion.hpp' : No such file or directory
-  main.cpp
-  Génération de code en cours...
+X:\TEMP_DOWNLOAD\Projet-Open-GL\glm\detail\glm.cpp(7,10): fatal error C1083: Impossible d'ouvrir le fichier include : 'gtx/dual_quaternion.hpp' : No such file or directory
