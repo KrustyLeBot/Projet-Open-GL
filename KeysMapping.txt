@@ -1,0 +1,25 @@
+Y
+|     Z
+|    /
+|   /
+|  /
+| /
+|/____________X
+
+ESCAPE -> close program
+
+// With rotation uncheked
+ARROW UP -> move up
+ARROW DOWN -> move down
+ARROW LEFT -> move left
+ARROW RIGHT -> move right
+PAGE UP -> zoom in
+PAGE DOWN -> zoom out
+
+// With rotation cheked
+ARROW UP -> rotate around x
+ARROW DOWN -> rotate around x
+ARROW LEFT -> rotate around y
+ARROW RIGHT -> rotate around y
+PAGE UP -> rotate around z
+PAGE DOWN -> rotate around z

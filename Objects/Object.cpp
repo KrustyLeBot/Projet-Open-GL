@@ -1,5 +1,8 @@
 #include "Object.h"
 
+extern GLfloat camPosZ;
+extern GLfloat rangeZ;
+
 Object::Object(GLboolean frameOnly)
     : m_frameOnly(frameOnly)
     , m_mode(GL_TRIANGLES)
@@ -9,6 +12,9 @@ Object::Object(GLboolean frameOnly)
     , m_centerX(0)
     , m_centerY(0)
     , m_centerZ(0)
+    , m_scaleX(0)
+    , m_scaleY(0)
+    , m_scaleZ(0)
 {
 }
 
@@ -32,6 +38,7 @@ void Object::display()
     /* Send data : 24 vertices */
     glPushMatrix();
     glTranslatef(m_centerX, m_centerY, m_centerZ);
+    glScalef(m_scaleX, m_scaleY, m_scaleZ);
     glRotatef(m_rotateAngleX, 1, 0, 0);
     glRotatef(m_rotateAngleY, 0, 1, 0);
     glRotatef(m_rotateAngleZ, 0, 0, 1);
@@ -49,4 +56,11 @@ void Object::setRotation(GLfloat rotateAngleX, GLfloat rotateAngleY, GLfloat rot
     m_rotateAngleX = rotateAngleX;
     m_rotateAngleY = rotateAngleY;
     m_rotateAngleZ = rotateAngleZ;
+}
+
+void Object::setScale(GLfloat scaleX, GLfloat scaleY, GLfloat scaleZ)
+{
+    m_scaleX = scaleX;
+    m_scaleY = scaleY;
+    m_scaleZ = scaleZ;
 }

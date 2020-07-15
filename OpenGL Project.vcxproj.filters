@@ -18,6 +18,7 @@
     <ClCompile Include="Objects\ObjectCircle.cpp" />
     <ClCompile Include="Objects\ObjectCube.cpp" />
     <ClCompile Include="Objects\ObjectTriangle.cpp" />
+    <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="glm\detail\glm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,8 @@
     <ClInclude Include="Objects\ObjectCircle.h" />
     <ClInclude Include="Objects\ObjectCube.h" />
     <ClInclude Include="Objects\ObjectTriangle.h" />
+    <ClInclude Include="Callbacks.h" />
+    <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="glm\common.hpp" />
     <ClInclude Include="glm\detail\compute_common.hpp" />
     <ClInclude Include="glm\detail\compute_vector_relational.hpp" />
@@ -332,7 +335,6 @@
     <ClInclude Include="glm\vec3.hpp" />
     <ClInclude Include="glm\vec4.hpp" />
     <ClInclude Include="glm\vector_relational.hpp" />
-    <ClInclude Include="Callbacks.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLFW">
@@ -490,5 +492,8 @@
     <None Include="glm\gtx\vector_angle.inl" />
     <None Include="glm\gtx\vector_query.inl" />
     <None Include="glm\gtx\wrap.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="KeysMapping.txt" />
   </ItemGroup>
 </Project>

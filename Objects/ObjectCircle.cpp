@@ -4,6 +4,10 @@ ObjectCircle::ObjectCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLin
 	: Object::Object(frameOnly)
 {
     m_mode = GL_TRIANGLES;
+    m_centerX = x;
+    m_centerY = y;
+    m_centerZ = z;
+
     GLfloat lastX = x + radius;
     GLfloat lastY = y;
 

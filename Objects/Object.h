@@ -8,6 +8,7 @@ public:
 	Object(GLboolean frameOnly);
 	void display();
 	void setRotation(GLfloat rotateAngleX, GLfloat rotateAngleY, GLfloat rotateAngleZ);
+	void setScale(GLfloat scaleX, GLfloat scaleY, GLfloat scaleZ);
 
 protected:
 	std::vector<GLfloat> m_vertices;
@@ -22,5 +23,9 @@ protected:
 	GLfloat m_centerX;
 	GLfloat m_centerY;
 	GLfloat m_centerZ;
+
+	GLfloat m_scaleX;
+	GLfloat m_scaleY;
+	GLfloat m_scaleZ;
 };
 
