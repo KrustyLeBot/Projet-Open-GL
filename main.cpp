@@ -7,9 +7,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
-#include "callbacks.h"
-#include "LoadShaders.h"
-#include "DrawForms.h"
+#include "Callbacks.h"
+
+#include "Objects/Object.h"
+#include "Objects/ObjectSphere.h"
+#include "Objects/ObjectCircle.h"
+#include "Objects/ObjectRectangle.h"
 
 bool IMGUI_ON;
 
@@ -53,6 +56,14 @@ int main(void)
     float speedZ = 0.0f;
     bool autoRotationZ = false;
 
+    std::vector<Object> objectsVector;
+    objectsVector.push_back(ObjectSphere(0.5f, 0.5f, 0.0f, 0.5f, 30, 30, 0xf542e6, true));
+    objectsVector.push_back(ObjectSphere(-1.0f, -1.2f, 0.0f, 0.5f, 30, 30, 0xf542e6, true));
+    //objectsVector.push_back(ObjectCircle(0.0f, 0.0f, 0.0f, 0.5f, 30, 0xf542e6, true));
+    //objectsVector.push_back(ObjectRectangle(-0.8f, -0.2f, -0.8f, 0.2f, -0.4f, 0.2f, -0.4f, -0.2f, 0.0f, 0xf542e6, 0xf542e6, 0xf542e6, 0xf542e6, false));
+    //objectsVector.push_back(ObjectRectangle(-0.8f, -0.2f, -0.8f, 0.2f, -0.4f, 0.2f, -0.4f, -0.2f, 0.0f, 0xeb311c, 0xeb311c, 0xeb311c, 0xeb311c, false));
+    
+
     while (!glfwWindowShouldClose(window))
     {
         if (IMGUI_ON)
@@ -62,8 +73,6 @@ int main(void)
             ImGui::NewFrame();
             //////////////////////////////////////////
             // ImGui window definition
-            ImGui::Text("Hello, world %d", 123);
-
             ImGui::Checkbox("Auto Rotation X", &autoRotationX);
             ImGui::SameLine();
             ImGui::SliderFloat("Auto Rotation Speed X", &speedX, 0.0f, 1000.0f);
@@ -96,7 +105,7 @@ int main(void)
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        if (autoRotationX)
+        /*if (autoRotationX)
         {
             glRotatef((float)glfwGetTime() * speedX, 1.0f, 0.0f, 0.0f);
         }
@@ -114,27 +123,13 @@ int main(void)
             glRotatef(rotationX, 1.0f, 0.0f, 0.0f);
             glRotatef(rotationY, 0.0f, 1.0f, 0.0f);
             glRotatef(rotationZ, 0.0f, 0.0f, 1.0f);
-        }
+        }*/
         
-
-		/*drawRectangle
-		(
-			-0.5f, -0.5f, 0.0f,
-			-0.5f, 0.5f, 0.0f,
-			0.5f, 0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0xf5aa42,
-			0x42f545,
-			0xf542e6,
-			0x3840d9,
-			false
-		);*/
-
-		//drawCircle(0.0f, 0.0f, 0.0f, 0.5f, 2000, 0xf542e6, false);
-
-        drawSphere(0.0f, 0.0f, 0.0f, 0.5f, 30, 30, 0xf542e6, true);
-
-        //drawCube();
+        for (auto& object : objectsVector)
+        {
+            //object.setRotation(0, 0, (float)glfwGetTime() * 50);
+            object.display();
+        }
 
         if (IMGUI_ON)
         {
