@@ -15,6 +15,12 @@ Object::Object(GLboolean frameOnly)
     , m_scaleX(0)
     , m_scaleY(0)
     , m_scaleZ(0)
+    , m_moveX(0)
+    , m_moveY(0)
+    , m_moveZ(0)
+    , m_moveRelX(0)
+    , m_moveRelY(0)
+    , m_moveRelZ(0)
 {
 }
 
@@ -42,7 +48,16 @@ void Object::display()
     glRotatef(m_rotateAngleX, 1, 0, 0);
     glRotatef(m_rotateAngleY, 0, 1, 0);
     glRotatef(m_rotateAngleZ, 0, 0, 1);
-    glTranslatef(-m_centerX, -m_centerY, -m_centerZ);
+    glTranslatef(-m_centerX - m_moveRelX, -m_centerY - m_moveRelY, -m_centerZ - m_moveRelZ);
+    moveRelativ(0, 0, 0);
+    if (m_moveX != 0 || m_moveY != 0 || m_moveZ != 0)
+    {
+        glTranslatef(-m_moveX, -m_moveY, -m_moveZ);
+        m_centerX = m_moveX;
+        m_centerY = m_moveY;
+        m_centerZ = m_moveZ;
+        move(0, 0, 0);
+    }
     glDrawArrays(m_mode, 0, m_vertices.size() / 3);
     glPopMatrix();
 
@@ -63,4 +78,18 @@ void Object::setScale(GLfloat scaleX, GLfloat scaleY, GLfloat scaleZ)
     m_scaleX = scaleX;
     m_scaleY = scaleY;
     m_scaleZ = scaleZ;
+}
+
+void Object::move(GLfloat moveX, GLfloat moveY, GLfloat moveZ)
+{
+    m_moveX = moveX;
+    m_moveY = moveY;
+    m_moveZ = moveZ;
+}
+
+void Object::moveRelativ(GLfloat moveX, GLfloat moveY, GLfloat moveZ)
+{
+    m_moveRelX = moveX;
+    m_moveRelY = moveY;
+    m_moveRelZ = moveZ;
 }

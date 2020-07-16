@@ -61,11 +61,20 @@ int main(void)
     //objectsVector.push_back(ObjectCircle(0.0f, 0.0f, 99.9999f, 0.5f, 30, 0xf542e6, false));
     //objectsVector.push_back(ObjectCircle(-0.3f, 0.3f, 1.f, 0.5f, 30, 0xeb311c, false));
     //objectsVector.push_back(ObjectRectangle(-0.8f, -0.2f, -0.8f, 0.2f, -0.4f, 0.2f, -0.4f, -0.2f, 0.0f, 0xeb311c, 0xeb311c, 0xeb311c, 0xeb311c, false));
-    //ObjectOBJ test = ObjectOBJ("test.obj", 0xeb311c, true); 
-    //ObjectOBJ test = ObjectOBJ("char.obj", 0xeb311c, true);
-    ObjectOBJ test = ObjectOBJ("bugatti.obj", 0xeb311c, true);
-    test.setScale(0.1f, 0.1f, 0.1f);
-    objectsVector.push_back(test);
+    
+
+    std::vector<Object> invaders;
+    for (GLfloat i = 0.3f; i < 0.8f; i += ((0.8f - 0.3f) / 5))
+    {
+        for (GLfloat j = -0.5f; j < 0.5f; j += ((0.5f - -0.5f) / 11))
+        {
+            ObjectOBJ test = ObjectOBJ("Space_Invader.obj", 0xffffff, false);
+            test.setScale(0.0006f, 0.0006f, 0.0006f);
+            test.move(j, i, 0.0f);
+            invaders.push_back(test);
+        }
+
+    }
     
     while (!glfwWindowShouldClose(window))
     {
@@ -102,9 +111,19 @@ int main(void)
         // Draw all objects
         for (auto& object : objectsVector)
         {
-            //object.setRotation((float)glfwGetTime() * 50, 0, 0);
+            object.setRotation(0, (float)glfwGetTime() * 80, 0);
             object.display();
         }
+
+        //////////////////////////////////////////////////
+        // Space invadors
+        for (auto& object : invaders)
+        {
+            object.setRotation(0, (float)glfwGetTime() * 80, 0);
+            object.display();
+            object.moveRelativ(0.1f, 0.0f, 0.0f);
+        }
+        //////////////////////////////////////////////////
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();

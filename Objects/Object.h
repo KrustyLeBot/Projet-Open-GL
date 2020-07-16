@@ -9,6 +9,8 @@ public:
 	void display();
 	void setRotation(GLfloat rotateAngleX, GLfloat rotateAngleY, GLfloat rotateAngleZ);
 	void setScale(GLfloat scaleX, GLfloat scaleY, GLfloat scaleZ);
+	void move(GLfloat moveX, GLfloat moveY, GLfloat moveZ);
+	void moveRelativ(GLfloat moveX, GLfloat moveY, GLfloat moveZ);
 
 protected:
 	std::vector<GLfloat> m_vertices;
@@ -27,5 +29,13 @@ protected:
 	GLfloat m_scaleX;
 	GLfloat m_scaleY;
 	GLfloat m_scaleZ;
+
+	GLfloat m_moveX;
+	GLfloat m_moveY;
+	GLfloat m_moveZ;
+
+	GLfloat m_moveRelX;
+	GLfloat m_moveRelY;
+	GLfloat m_moveRelZ;
 };
 
